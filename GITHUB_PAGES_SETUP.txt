@@ -1,0 +1,12 @@
+松菱民主党ホームページ GitHub Pages 公開手順
+
+1. GitHubにログインし、New repository を選びます。
+2. Repository name: matsubishi-democratic-party
+3. Public を選択して Create repository。
+4. このフォルダー内のファイルと assets フォルダーを、リポジトリの一番上（ルート）にアップロードします。
+   ※ matsubishi-democratic-party-site という親フォルダーごとアップロードしないでください。
+5. Settings > Pages を開き、Build and deployment の Source を Deploy from a branch にします。
+6. Branch を main、folder を /(root) にして Save。
+7. GitHub Pages の表示する公開URLを確認します。通常は https://<GitHubユーザー名>.github.io/matsubishi-democratic-party/ です。
+
+注意: 既存の matsubishi-group.github.io リポジトリは変更しません。
