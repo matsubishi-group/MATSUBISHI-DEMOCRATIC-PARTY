@@ -1,0 +1,46 @@
+name: Assemble representative cat photo
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/assemble-representative.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Assemble and verify the supplied photo
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets
+          for i in 00 01 02 03 04 05 06 07 08 09; do
+            test "$(wc -c < "tmp-representative/chunk${i}.txt")" -eq 2000
+          done
+          test "$(wc -c < tmp-representative/chunk10.txt)" -eq 576
+          cat tmp-representative/chunk00.txt tmp-representative/chunk01.txt tmp-representative/chunk02.txt tmp-representative/chunk03.txt tmp-representative/chunk04.txt tmp-representative/chunk05.txt tmp-representative/chunk06.txt tmp-representative/chunk07.txt tmp-representative/chunk08.txt tmp-representative/chunk09.txt tmp-representative/chunk10.txt > /tmp/representative.b64
+          test "$(wc -c < /tmp/representative.b64)" -eq 20576
+          base64 --decode /tmp/representative.b64 > assets/representative-scratch-cat.webp
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          p = Path("assets/representative-scratch-cat.webp")
+          raw = p.read_bytes()
+          assert raw[:4] == b"RIFF" and raw[8:12] == b"WEBP", "WebP header verification failed"
+          with Image.open(p) as im:
+              im.verify()
+          print(f"Validated {p}: {len(raw)} bytes")
+          PY
+          rm -rf tmp-representative
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add supplied cat photo for representative message"
+          git push
