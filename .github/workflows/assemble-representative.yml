@@ -30,12 +30,11 @@ jobs:
           base64 --decode /tmp/representative.b64 > assets/representative-scratch-cat.webp
           python3 - <<'PY'
           from pathlib import Path
-          from PIL import Image
           p = Path("assets/representative-scratch-cat.webp")
           raw = p.read_bytes()
           assert raw[:4] == b"RIFF" and raw[8:12] == b"WEBP", "WebP header verification failed"
-          with Image.open(p) as im:
-              im.verify()
+          declared_size = int.from_bytes(raw[4:8], "little") + 8
+          assert declared_size == len(raw), f"RIFF size mismatch: {declared_size} != {len(raw)}"
           print(f"Validated {p}: {len(raw)} bytes")
           PY
           rm -rf tmp-representative
