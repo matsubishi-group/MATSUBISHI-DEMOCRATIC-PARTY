@@ -54,7 +54,7 @@
   // Full-width photographic hero slider: each message uses its own matching photo.
   const slides = [
     {title:'国民の生活を、<br><em>第一に。</em>', lead:'一人ひとりの暮らしを支え、安心できる社会へ。', caption:'暮らしに寄り添う政治を', photo:0, background:'assets/hero-family-care.webp', position:'center center'},
-    {title:'誰もが安心できる、<br><em>医療と福祉へ。</em>', lead:'必要なときに、安心して医療を受けられる社会へ。', caption:'地域に根ざした医療と福祉', photo:1, background:'https://images.pexels.com/photos/4266936/pexels-photo-4266936.jpeg?cs=srgb&dl=pexels-cedric-fauntleroy-4266936.jpg&fm=jpg', position:'center center'},
+    {title:'誰もが安心できる、<br><em>医療と福祉へ。</em>', lead:'必要なときに、安心して医療を受けられる社会へ。', caption:'地域に根ざした医療と福祉', photo:1, background:'assets/hero-healthcare.webp', position:'center center'},
     {title:'地域の暮らしを、<br><em>元気に。</em>', lead:'地域のお店や働く人を支え、まちの活力を育てます。', caption:'地域とともに、未来へ進む', photo:2, background:'assets/hero-community-shop.webp', position:'center center'}
   ];
   const heroTitle = document.getElementById('hero-title');
