@@ -1,0 +1,46 @@
+name: Assemble exact uploaded healthcare banner
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/assemble-healthcare.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Assemble the uploaded WebP asset and remove staging parts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets
+          test "$(wc -c < tmp-healthcare/part00.txt)" -eq 10000
+          test "$(wc -c < tmp-healthcare/part01.txt)" -eq 10000
+          test "$(wc -c < tmp-healthcare/part02.txt)" -eq 10000
+          test "$(wc -c < tmp-healthcare/part03.txt)" -eq 10000
+          test "$(wc -c < tmp-healthcare/part04.txt)" -eq 10000
+          test "$(wc -c < tmp-healthcare/part05.txt)" -eq 9760
+          cat tmp-healthcare/part00.txt tmp-healthcare/part01.txt tmp-healthcare/part02.txt tmp-healthcare/part03.txt tmp-healthcare/part04.txt tmp-healthcare/part05.txt > /tmp/hero-healthcare.b64
+          test "$(wc -c < /tmp/hero-healthcare.b64)" -eq 59760
+          base64 --decode /tmp/hero-healthcare.b64 > assets/hero-healthcare.webp
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("assets/hero-healthcare.webp")
+          b = p.read_bytes()
+          assert b[:4] == b"RIFF" and b[8:12] == b"WEBP", "The assembled asset is not a valid WebP file"
+          assert len(b) > 10000, "The assembled image is unexpectedly small"
+          print(f"Verified WebP asset: {len(b)} bytes")
+          PY
+          rm -rf tmp-healthcare
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add exact uploaded healthcare banner image"
+          git push
