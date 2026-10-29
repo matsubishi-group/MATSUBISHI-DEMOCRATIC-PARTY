@@ -131,3 +131,55 @@
 .hero-pagination-dot:hover,.hero-pagination-dot:focus-visible{background:rgba(255,255,255,.14);color:var(--yellow);}
 .hero-pagination-dot.is-active{width:38px;min-width:38px;background:var(--yellow);border-color:var(--yellow);color:#071a36;}
 @media(max-width:760px){.hero-pagination{bottom:18px;gap:5px;padding:6px 7px;}.hero-pagination-dot{width:30px;height:27px;min-width:30px;font-size:9px;}.hero-pagination-dot.is-active{width:34px;min-width:34px;}}
+
+
+/* Final hero pagination polish: keep the page controls visible and balanced on every screen. */
+.hero{padding-bottom:22px;}
+.hero-pagination{
+  left:50%;
+  bottom:30px;
+  z-index:10;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:8px 10px;
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:999px;
+  background:rgba(5,18,38,.78);
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+  backdrop-filter:blur(10px);
+}
+.hero-pagination-dot{
+  display:grid;
+  place-items:center;
+  width:36px;
+  min-width:36px;
+  height:32px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  cursor:pointer;
+}
+.hero-pagination-dot.is-active{
+  width:40px;
+  min-width:40px;
+  background:var(--yellow);
+  border-color:var(--yellow);
+  color:#071a36;
+}
+.hero-pagination-dot:focus-visible{
+  outline:3px solid #fff;
+  outline-offset:3px;
+}
+@media(max-width:760px){
+  .hero{padding-bottom:24px;}
+  .hero-pagination{bottom:18px;gap:5px;padding:6px 7px;}
+  .hero-pagination-dot{width:31px;min-width:31px;height:28px;font-size:9px;}
+  .hero-pagination-dot.is-active{width:35px;min-width:35px;}
+}
