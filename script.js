@@ -61,6 +61,7 @@
   const heroLead = document.getElementById('hero-lead');
   const caption = document.getElementById('hero-caption');
   const heroNumber = document.querySelector('.hero-number');
+  const heroPaginationDots = [...document.querySelectorAll('[data-hero-page]')];
   const photoEls = [...document.querySelectorAll('[data-slide-photo]')];
   const heroBackground = document.querySelector('.hero-background-slide');
   
@@ -96,6 +97,11 @@
       }, 650);
     }
     if (heroNumber) heroNumber.innerHTML = `0${currentSlide + 1} <span>/ 03</span>`;
+    heroPaginationDots.forEach((dot, dotIndex) => {
+      const active = dotIndex === currentSlide;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-pressed', String(active));
+    });
     photoEls.forEach(el => {
       const n = Number(el.dataset.slidePhoto);
       const active = n === s.photo;
@@ -112,6 +118,10 @@
     if (timer) window.clearInterval(timer);
     if (!reduceMotion) timer = window.setInterval(() => showSlide(currentSlide + 1), 3000);
   };
+  heroPaginationDots.forEach(dot => dot.addEventListener('click', () => {
+    showSlide(Number(dot.dataset.heroPage));
+    startHeroTimer();
+  }));
   document.querySelector('.hero-slider-prev')?.addEventListener('click', () => { showSlide(currentSlide - 1); startHeroTimer(); });
   document.querySelector('.hero-slider-next')?.addEventListener('click', () => { showSlide(currentSlide + 1); startHeroTimer(); });
   startHeroTimer();
