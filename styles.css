@@ -106,3 +106,11 @@
 .message-photo{width:100%;max-width:520px;height:auto;aspect-ratio:3/2;object-fit:contain;object-position:center;border-radius:0;}
 @media(max-width:900px){.message-photo{max-width:100%;}}
 @media(max-width:640px){.message-photo-wrap{width:100%;max-width:100%;min-height:0;margin-inline:auto;}.message-photo{width:100%;max-width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;border-radius:0;}}
+
+
+/* Representative image only: remove the decorative offset shadow and overlaid label. */
+.message-photo{box-shadow:none!important;border:0!important;border-radius:0!important;filter:none!important;object-fit:contain!important;object-position:center!important;height:auto!important;aspect-ratio:3/2!important;}
+.message-photo-wrap{background:transparent!important;box-shadow:none!important;border:0!important;outline:0!important;}
+.message-photo-wrap::before,.message-photo-wrap::after{content:none!important;display:none!important;}
+.message-photo-wrap .photo-label{display:none!important;}
+@media(max-width:640px){.message-photo{height:auto!important;aspect-ratio:3/2!important;object-fit:contain!important;}}
