@@ -123,3 +123,11 @@
 .hero-pagination-dot.is-active{width:27px;background:var(--yellow);border-color:var(--yellow);}
 @media(max-width:760px){.hero-pagination{bottom:18px;gap:9px;padding:7px 10px;}.hero-pagination-dot{width:8px;height:8px;min-width:8px;}.hero-pagination-dot.is-active{width:23px;}}
 @media(prefers-reduced-motion:reduce){.hero-pagination-dot{transition:none;}}
+
+
+/* Make the hero pagination clearly visible as numbered page controls. */
+.hero-pagination{gap:6px;padding:7px 9px;}
+.hero-pagination-dot{display:grid;place-items:center;width:34px;height:30px;min-width:34px;padding:0;border:1px solid rgba(255,255,255,.35);border-radius:4px;background:transparent;color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;}
+.hero-pagination-dot:hover,.hero-pagination-dot:focus-visible{background:rgba(255,255,255,.14);color:var(--yellow);}
+.hero-pagination-dot.is-active{width:38px;min-width:38px;background:var(--yellow);border-color:var(--yellow);color:#071a36;}
+@media(max-width:760px){.hero-pagination{bottom:18px;gap:5px;padding:6px 7px;}.hero-pagination-dot{width:30px;height:27px;min-width:30px;font-size:9px;}.hero-pagination-dot.is-active{width:34px;min-width:34px;}}
