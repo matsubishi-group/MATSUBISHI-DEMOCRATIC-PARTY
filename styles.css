@@ -183,3 +183,55 @@
   .hero-pagination-dot{width:31px;min-width:31px;height:28px;font-size:9px;}
   .hero-pagination-dot.is-active{width:35px;min-width:35px;}
 }
+
+
+/* Hero banner pagination: simple round dots */
+.hero-pagination{
+  left:50%;
+  bottom:28px;
+  gap:10px;
+  padding:9px 12px;
+  border:0;
+  border-radius:999px;
+  background:rgba(5,18,38,.42);
+  box-shadow:none;
+}
+.hero-pagination-dot,
+.hero-pagination-dot.is-active{
+  display:block;
+  width:10px;
+  min-width:10px;
+  height:10px;
+  padding:0;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
+  color:transparent;
+  font-size:0;
+  line-height:0;
+  letter-spacing:0;
+}
+.hero-pagination-dot.is-active{
+  width:12px;
+  min-width:12px;
+  height:12px;
+  background:var(--yellow);
+  border-color:var(--yellow);
+}
+.hero-pagination-dot:hover,
+.hero-pagination-dot:focus-visible{
+  background:#fff;
+  border-color:#fff;
+}
+.hero-pagination-dot.is-active:hover,
+.hero-pagination-dot.is-active:focus-visible{
+  background:var(--yellow);
+  border-color:var(--yellow);
+}
+@media(max-width:760px){
+  .hero-pagination{bottom:15px;gap:9px;padding:7px 10px;}
+  .hero-pagination-dot,
+  .hero-pagination-dot.is-active{width:9px;min-width:9px;height:9px;}
+  .hero-pagination-dot.is-active{width:11px;min-width:11px;height:11px;}
+}
