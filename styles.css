@@ -575,43 +575,49 @@
 @media(max-width:640px){.policy-constitution-callout{align-items:flex-start;flex-direction:column;gap:17px;padding:20px 17px}.policy-constitution-link{width:100%;justify-content:space-between}}
 
 
-/* Editorial-style visual layouts for the six dedicated policy pages. */
-.policy-page-hero-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.75fr);gap:clamp(28px,4.5vw,62px);align-items:center}
-.policy-page-hero-copy{min-width:0}
-.policy-hero-media{margin:0;min-width:0;position:relative}
-.policy-photo-frame{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.24);border-radius:5px;background:linear-gradient(135deg,#1a456e,#0c2749);box-shadow:0 20px 45px rgba(0,0,0,.22)}
-.policy-photo-frame:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(4,18,38,.62),transparent 47%)}
-.policy-hero-photo{display:block;width:100%;height:310px;object-fit:cover;object-position:center}
-.policy-photo-label{position:absolute;z-index:1;left:17px;bottom:16px;color:#fff;font-size:12px;font-weight:800;letter-spacing:.03em;text-shadow:0 2px 8px rgba(0,0,0,.25)}
-.policy-hero-media figcaption,.policy-visual-figure figcaption{font-size:10px;line-height:1.7;color:#b8c8d9;margin-top:10px}
-.policy-visual-feature{display:grid;grid-template-columns:minmax(220px,.78fr) minmax(0,1.22fr);align-items:center;gap:clamp(22px,3.5vw,42px);margin:0 0 48px;padding:clamp(22px,3.4vw,36px);background:#fff;border:1px solid #dce5ef;border-left:4px solid var(--policy-accent);box-shadow:0 12px 30px rgba(8,27,55,.045)}
-.policy-visual-copy .section-kicker{font-size:9px;font-weight:900;letter-spacing:.17em;color:var(--policy-accent);margin:0 0 9px}
-.policy-visual-copy h2{font-size:clamp(21px,2.6vw,29px);line-height:1.5;letter-spacing:.01em;color:#102b4b;margin:0 0 12px;font-weight:900}
-.policy-visual-copy>p:not(.section-kicker){color:#5f7186;font-size:12px;line-height:2.1;margin:0 0 19px}
-.policy-visual-points{display:grid;gap:8px}
-.policy-visual-points span{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:800;color:#26405e}
-.policy-visual-points b{width:25px;height:25px;flex:0 0 25px;display:grid;place-items:center;border-radius:50%;background:color-mix(in srgb,var(--policy-accent) 13%,white);color:var(--policy-accent);font:800 9px Georgia,serif}
-.policy-visual-figure{margin:0;min-width:0}
-.policy-visual-figure img{display:block;width:100%;height:auto;max-height:360px;object-fit:contain;border-radius:5px}
-.policy-visual-figure figcaption{color:#8998a9;margin-top:8px}
-.policy-page .policy-breadcrumb{margin-bottom:27px}
-.policy-page .policy-page-section-heading{margin-top:0}
-.policy-page .policy-page-link{text-decoration:none}
+
+
+/* Balanced policy imagery, preserving the original full-width hero and reading order. */
+.policy-page .nav-wrap{justify-content:flex-start}
+.policy-page-hero .container{max-width:1200px}
+.policy-page-hero h1{max-width:850px}
+.policy-page-intro{max-width:850px}
+.policy-page-hero-meta{max-width:850px}
+.policy-media-section{margin:40px 0 46px;padding:clamp(20px,3vw,32px);background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid #dfe7ef;box-shadow:0 10px 28px rgba(8,27,55,.045)}
+.policy-media-heading{margin:0 0 20px;max-width:760px}
+.policy-media-heading .section-kicker{font-size:9px;color:var(--policy-accent);font-weight:900;letter-spacing:.17em;margin:0 0 7px}
+.policy-media-heading h2{font-size:clamp(22px,2.8vw,29px);line-height:1.5;color:#102b4b;font-weight:900;letter-spacing:.02em;margin:0 0 7px}
+.policy-media-heading>p:last-child{font-size:12px;line-height:2;color:#697b90;margin:0}
+.policy-media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
+.policy-media-card{min-width:0;display:flex;flex-direction:column;margin:0;background:#fff;border:1px solid #dce5ef;box-shadow:0 7px 22px rgba(8,27,55,.045);overflow:hidden}
+.policy-media-image{position:relative;aspect-ratio:16 / 9;overflow:hidden;background:#f0f4f8}
+.policy-media-image>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.policy-media-image-label{position:absolute;left:0;right:0;bottom:0;padding:22px 15px 13px;background:linear-gradient(0deg,rgba(5,20,42,.78),rgba(5,20,42,0));color:#fff;font-size:12px;font-weight:850;line-height:1.6}
+.policy-media-diagram{display:grid;place-items:center;background:#f7f9fc}
+.policy-media-diagram>img{object-fit:contain;width:100%;height:100%}
+.policy-media-card>figcaption{display:flex;flex-direction:column;gap:4px;flex:1;padding:14px 16px 16px}
+.policy-media-card>figcaption strong{font-size:13px;line-height:1.6;color:#183958;font-weight:850}
+.policy-media-card>figcaption span{font-size:10px;line-height:1.8;color:#7b8a9c}
+.policy-page .policy-page-grid{align-items:stretch}
+.policy-page .policy-page-panel{height:100%}
+.policy-page .policy-actions-panel{margin-top:0}
+.policy-page .policy-breadcrumb{margin-bottom:31px}
+.policy-page .policy-page-section-heading{margin-bottom:22px}
 @media(max-width:850px){
- .policy-page-hero-layout{grid-template-columns:minmax(0,1.05fr) minmax(230px,.85fr);gap:25px}
- .policy-hero-photo{height:265px}
- .policy-visual-feature{grid-template-columns:minmax(190px,.8fr) minmax(0,1.2fr);gap:22px}
- .policy-visual-feature{padding:23px}
+ .policy-media-grid{gap:14px}
+ .policy-media-section{padding:22px}
+ .policy-media-card>figcaption{padding:12px}
+ .policy-media-card>figcaption strong{font-size:12px}
 }
 @media(max-width:640px){
  .policy-page .nav-wrap{justify-content:flex-start}
- .policy-page-hero-layout{grid-template-columns:minmax(0,1fr);gap:22px}
- .policy-page-hero-copy{order:0}
- .policy-hero-media{order:1}
- .policy-hero-photo{height:230px}
- .policy-hero-media figcaption{margin-top:7px}
- .policy-visual-feature{grid-template-columns:minmax(0,1fr);gap:19px;margin-bottom:35px;padding:21px 17px}
- .policy-visual-copy h2{font-size:23px}
- .policy-visual-figure img{max-height:none}
- .policy-page .policy-breadcrumb{margin-bottom:22px}
+ .policy-page-hero{padding:42px 0 36px}
+ .policy-page-hero h1{font-size:34px}
+ .policy-page-content{padding:22px 0 44px}
+ .policy-media-section{margin:32px 0 36px;padding:16px}
+ .policy-media-grid{grid-template-columns:minmax(0,1fr);gap:15px}
+ .policy-media-image{aspect-ratio:16 / 9}
+ .policy-media-card>figcaption{padding:12px 14px 14px}
+ .policy-media-card>figcaption strong{font-size:13px}
+ .policy-page .policy-page-section-heading{margin-bottom:19px}
 }
