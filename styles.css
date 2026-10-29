@@ -99,3 +99,10 @@
 .message-photo-wrap{width:100%;max-width:388px;margin-inline:auto;}
 .message-photo{width:100%;max-width:388px;height:500px;object-fit:cover;object-position:center 18%;}
 @media(max-width:640px){.message-photo-wrap{max-width:min(388px,78vw);}.message-photo{height:340px;}}
+
+
+/* Representative message photo: preserve the complete source image without cropping or stretching. */
+.message-photo-wrap{display:flex;align-items:center;justify-content:center;}
+.message-photo{width:100%;max-width:520px;height:auto;aspect-ratio:3/2;object-fit:contain;object-position:center;border-radius:0;}
+@media(max-width:900px){.message-photo{max-width:100%;}}
+@media(max-width:640px){.message-photo-wrap{width:100%;max-width:100%;min-height:0;margin-inline:auto;}.message-photo{width:100%;max-width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;border-radius:0;}}
