@@ -374,3 +374,58 @@
   outline-offset: 3px;
   border-radius: 2px;
 }
+
+/* Footer refresh: enlarge the party logo and remove the footer slogan block. */
+.footer-main {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+}
+.footer-brand {
+  gap: 16px;
+}
+.footer-brand img {
+  width: 80px;
+  height: 80px;
+  flex: 0 0 80px;
+  border-radius: 14px;
+  object-fit: contain;
+}
+.footer-brand .brand-text strong {
+  font-size: 22px;
+}
+.footer-brand .brand-text small {
+  font-size: 9px;
+}
+.footer-links {
+  grid-column: auto;
+  justify-content: flex-end;
+}
+@media (max-width: 900px) {
+  .footer-main {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .footer-links {
+    grid-column: auto;
+    justify-content: flex-end;
+  }
+}
+@media (max-width: 640px) {
+  .footer-main {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 22px;
+  }
+  .footer-brand img {
+    width: 70px;
+    height: 70px;
+    flex-basis: 70px;
+  }
+  .footer-brand .brand-text strong {
+    font-size: 20px;
+  }
+  .footer-links {
+    grid-column: 1;
+    justify-content: flex-start;
+  }
+}
