@@ -429,3 +429,30 @@
     justify-content: flex-start;
   }
 }
+
+/* Restore the original footer placement of the "党員募集中" button while keeping the enlarged logo and removed slogan. */
+.footer-main {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.footer-main > .footer-links {
+  grid-column: 3;
+  justify-content: flex-end;
+}
+@media (max-width: 900px) {
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-main > .footer-links {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 640px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+  }
+  .footer-main > .footer-links {
+    grid-column: 1;
+    justify-content: flex-start;
+  }
+}
