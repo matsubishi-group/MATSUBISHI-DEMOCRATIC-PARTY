@@ -456,3 +456,28 @@
     justify-content: flex-start;
   }
 }
+
+/* Keep the footer "党員募集中" button on the right at every screen width. */
+.footer-main > .footer-links {
+  grid-column: 3;
+  justify-content: flex-end;
+}
+@media (max-width: 900px) {
+  .footer-main {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .footer-main > .footer-links {
+    grid-column: 2;
+    justify-content: flex-end;
+  }
+}
+@media (max-width: 640px) {
+  .footer-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .footer-main > .footer-links {
+    grid-column: 1;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}
