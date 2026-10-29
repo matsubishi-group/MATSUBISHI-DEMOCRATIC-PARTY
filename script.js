@@ -39,18 +39,6 @@
     });
   });
 
-  document.querySelectorAll('.policy-more').forEach(button => {
-    button.addEventListener('click', () => {
-      const panelId = button.getAttribute('aria-controls');
-      const panel = document.getElementById(panelId);
-      if (!panel) return;
-      const willOpen = button.getAttribute('aria-expanded') !== 'true';
-      button.setAttribute('aria-expanded', String(willOpen));
-      panel.hidden = !willOpen;
-      button.querySelector('span').textContent = willOpen ? '−' : '＋';
-    });
-  });
-
   // Full-width photographic hero slider: each message uses its own matching photo.
   const slides = [
     {title:'国民の生活を、<br><em>第一に。</em>', lead:'一人ひとりの暮らしを支え、安心できる社会へ。', caption:'暮らしに寄り添う政治を', photo:0, background:'assets/hero-family-care.webp', position:'center center'},
