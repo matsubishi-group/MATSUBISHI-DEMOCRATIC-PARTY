@@ -564,3 +564,15 @@
  .policy-project-notice{padding:16px}
  .policy-other-section{padding:40px 0 48px}
 }
+
+
+/* Highlight the active policy and connect security policy to the constitution draft. */
+.policy-other-links a[aria-current="page"]{background:#fff;border-color:var(--policy-accent);box-shadow:inset 3px 0 var(--policy-accent)}
+.policy-constitution-callout{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:32px 0;padding:clamp(22px,4vw,34px);background:#fff;border:1px solid #dce5ef;border-left:4px solid var(--policy-accent);box-shadow:0 10px 26px rgba(8,27,55,.04)}
+.policy-constitution-callout>div{max-width:700px}
+.policy-constitution-callout .section-kicker{font-size:9px;color:var(--policy-accent);font-weight:900;letter-spacing:.15em;margin:0 0 7px}
+.policy-constitution-callout h2{font-size:21px;line-height:1.5;color:#102b4b;margin:0 0 8px}
+.policy-constitution-callout p:not(.section-kicker){font-size:12px;line-height:2;color:#5e7085;margin:0}
+.policy-constitution-link{flex-shrink:0;background:#0b2851;color:#fff;border:1px solid #2b4d73;border-radius:4px;gap:18px}
+.policy-constitution-link:hover{background:#174779;color:#fff}
+@media(max-width:640px){.policy-constitution-callout{align-items:flex-start;flex-direction:column;gap:17px;padding:20px 17px}.policy-constitution-link{width:100%;justify-content:space-between}}
