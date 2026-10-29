@@ -114,3 +114,12 @@
 .message-photo-wrap::before,.message-photo-wrap::after{content:none!important;display:none!important;}
 .message-photo-wrap .photo-label{display:none!important;}
 @media(max-width:640px){.message-photo{height:auto!important;aspect-ratio:3/2!important;object-fit:contain!important;}}
+
+
+/* Hero banner pagination: three clickable page indicators, synchronized with the slider. */
+.hero-pagination{position:absolute;z-index:6;left:50%;bottom:34px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(5,18,38,.36);backdrop-filter:blur(8px);}
+.hero-pagination-dot{appearance:none;width:9px;height:9px;min-width:9px;padding:0;border:1px solid rgba(255,255,255,.9);border-radius:999px;background:rgba(255,255,255,.42);cursor:pointer;transition:width .2s ease,background .2s ease,border-color .2s ease;}
+.hero-pagination-dot:hover,.hero-pagination-dot:focus-visible{border-color:var(--yellow);outline:2px solid rgba(245,214,63,.5);outline-offset:3px;}
+.hero-pagination-dot.is-active{width:27px;background:var(--yellow);border-color:var(--yellow);}
+@media(max-width:760px){.hero-pagination{bottom:18px;gap:9px;padding:7px 10px;}.hero-pagination-dot{width:8px;height:8px;min-width:8px;}.hero-pagination-dot.is-active{width:23px;}}
+@media(prefers-reduced-motion:reduce){.hero-pagination-dot{transition:none;}}
