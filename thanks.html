@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#081b37">
   <meta name="robots" content="noindex, nofollow">
-  <meta http-equiv="refresh" content="5;url=index.html">
   <title>回答を受け付けました｜松菱民主党</title>
   <link rel="icon" href="assets/logo-tree.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=20261030-thanks2">
-  <link rel="stylesheet" href="voice.css?v=20261030-thanks2">
+  <link rel="stylesheet" href="styles.css?v=20261030-fadecount">
+  <link rel="stylesheet" href="voice.css?v=20261030-fadecount">
 </head>
 <body class="voice-page thanks-page">
   <div class="topline"><div class="container topline-inner"><span><i class="status-dot"></i> 松菱民主党 公式サイト</span><span class="topline-right">対話を力に、前へ進む政党へ。</span></div></div>
@@ -33,7 +32,7 @@
       <div class="thanks-return">
         <span class="thanks-return-label">HOME PAGE</span>
         <p><strong id="countdown">5</strong>秒後にトップページへ自動的に戻ります。</p>
-        <div class="thanks-progress" aria-hidden="true"><span></span></div>
+        <div class="thanks-progress" aria-hidden="true"><span id="countdownProgress"></span></div>
       </div>
       <a class="thanks-home-button" href="index.html">今すぐトップページへ戻る <span aria-hidden="true">→</span></a>
     </div>
@@ -47,21 +46,47 @@
   <script>
     (() => {
       const counter = document.getElementById('countdown');
-      const deadline = Date.now() + 5000;
+      const card = document.querySelector('.thanks-card');
+      const progress = document.getElementById('countdownProgress');
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      const updateCountdown = () => {
-        const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
-        if (counter) counter.textContent = String(remaining);
-        if (remaining === 0) {
-          window.clearInterval(countdownTimer);
-          window.location.replace('index.html');
-        }
+      let countdownStarted = false;
+      let countdownTimer = null;
+
+      const startCountdown = () => {
+        if (countdownStarted) return;
+        countdownStarted = true;
+
+        if (progress) progress.classList.add('is-counting');
+
+        const deadline = Date.now() + 5000;
+        const updateCountdown = () => {
+          const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+          if (counter) counter.textContent = String(remaining);
+          if (remaining === 0) {
+            window.clearInterval(countdownTimer);
+            window.location.replace('index.html');
+          }
+        };
+
+        countdownTimer = window.setInterval(updateCountdown, 100);
+        updateCountdown();
       };
 
-      const countdownTimer = window.setInterval(updateCountdown, 100);
-      updateCountdown();
-      window.setTimeout(() => window.location.replace('index.html'), 5000);
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!card || reducedMotion) {
+        startCountdown();
+      } else {
+        const onFadeInFinished = event => {
+          if (event.target !== card || event.animationName !== 'thanks-fade-in') return;
+          card.removeEventListener('animationend', onFadeInFinished);
+          startCountdown();
+        };
+
+        card.addEventListener('animationend', onFadeInFinished);
+        // Safety fallback in case an animation event is not delivered by the browser.
+        window.setTimeout(startCountdown, 1100);
+      }
     })();
   </script>
 </body>
