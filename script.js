@@ -128,7 +128,7 @@
 
   // Fade content in gently when it enters the viewport.
   const revealTargets = [...document.querySelectorAll(
-    '.value-item, .about-layout, .policy-card, .approach-step, .news-intro, .news-card, .message-layout, .timeline-item, .closing-inner, .policy-page-hero, .policy-page-panel, .policy-diagram-section, .policy-actions-panel, .policy-check, .policy-project-notice, .constitution-panel'
+    '.value-item, .about-layout, .policy-card, .approach-step, .news-intro, .news-card, .message-layout, .timeline-item, .voice-invite-frame, .closing-inner, .policy-page-hero, .policy-page-panel, .policy-diagram-section, .policy-actions-panel, .policy-check, .policy-project-notice, .constitution-panel'
   )];
   if (!reduceMotion && 'IntersectionObserver' in window) {
     revealTargets.forEach((element, index) => {
