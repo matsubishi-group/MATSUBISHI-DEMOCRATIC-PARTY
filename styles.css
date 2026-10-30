@@ -759,8 +759,7 @@
 @media(max-width:760px){.hero{min-height:0;}.hero-inner{min-height:0;padding-block:52px 34px;}}
 
 
-/* Survey access in the main site navigation and closing banner. */
-.nav-feedback-link{color:var(--yellow)!important;font-weight:900}
+/* Survey access in the closing banner. */
 .closing-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap}
 .closing-actions .button{white-space:nowrap}
 @media(max-width:760px){.closing-actions{justify-content:flex-start}}
