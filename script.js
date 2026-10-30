@@ -126,5 +126,24 @@
     document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
   }
 
+  // Fade content in gently when it enters the viewport.
+  const revealTargets = [...document.querySelectorAll(
+    '.value-item, .about-layout, .policy-card, .approach-step, .news-intro, .news-card, .message-layout, .timeline-item, .closing-inner, .policy-page-hero, .policy-page-panel, .policy-diagram-section, .policy-actions-panel, .policy-check, .policy-project-notice, .constitution-panel'
+  )];
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    revealTargets.forEach((element, index) => {
+      element.classList.add('scroll-fade-in');
+      element.style.setProperty('--scroll-delay', `${(index % 3) * 55}ms`);
+    });
+    const fadeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        fadeObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -28px 0px' });
+    revealTargets.forEach(element => fadeObserver.observe(element));
+  }
+
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
