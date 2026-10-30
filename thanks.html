@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081b37">
+  <meta name="robots" content="noindex, nofollow">
+  <title>回答を受け付けました｜松菱民主党</title>
+  <link rel="icon" href="assets/logo-tree.png" type="image/png">
+  <link rel="stylesheet" href="styles.css?v=20261030-thanks">
+  <link rel="stylesheet" href="voice.css?v=20261030-thanks">
+</head>
+<body class="voice-page thanks-page">
+  <div class="topline"><div class="container topline-inner"><span><i class="status-dot"></i> 松菱民主党 公式サイト</span><span class="topline-right">対話を力に、前へ進む政党へ。</span></div></div>
+  <header class="site-header voice-header">
+    <div class="container voice-header-inner">
+      <a class="brand" href="index.html" aria-label="松菱民主党 ホーム">
+        <img src="assets/logo-tree.png" width="48" height="48" alt="">
+        <span class="brand-text"><strong>松菱民主党</strong><small>MATSUBISHI DEMOCRATIC PARTY</small></span>
+      </a>
+      <a class="voice-home-link" href="index.html">ホームへ戻る</a>
+    </div>
+  </header>
+  <main class="thanks-main">
+    <div class="thanks-card">
+      <div class="thanks-emblem" aria-hidden="true"><span>✓</span></div>
+      <p class="thanks-kicker">THANK YOU FOR YOUR VOICE</p>
+      <h1>回答を受け付けました</h1>
+      <div class="thanks-rule"></div>
+      <p class="thanks-message">ご回答ありがとうございました。<br>松菱民主党のアンケートにご協力いただき、ありがとうございます。</p>
+      <p class="thanks-disclaimer">※現在は回答の送信・保存機能が未接続のため、これは画面上の完了表示です。回答データは記録されていません。</p>
+      <div class="thanks-return">
+        <span class="thanks-return-label">HOME PAGE</span>
+        <p><strong id="countdown">5</strong>秒後にトップページへ自動的に戻ります。</p>
+        <div class="thanks-progress" aria-hidden="true"><span></span></div>
+      </div>
+      <a class="thanks-home-button" href="index.html">今すぐトップページへ戻る <span aria-hidden="true">→</span></a>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> 松菱民主党プロジェクト</p>
+      <p class="project-disclaimer">本サイトはScratch上で展開する架空の政党プロジェクトの紹介サイトです。</p>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const counter = document.getElementById('countdown');
+      let remaining = 5;
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const countdownTimer = window.setInterval(() => {
+        remaining -= 1;
+        if (counter) counter.textContent = String(Math.max(remaining, 0));
+        if (remaining <= 0) {
+          window.clearInterval(countdownTimer);
+          window.location.replace('index.html');
+        }
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>
