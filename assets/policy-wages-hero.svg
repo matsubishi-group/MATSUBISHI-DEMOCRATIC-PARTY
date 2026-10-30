@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#102a3a"/><stop offset="1" stop-color="#245b59"/></linearGradient><linearGradient id="window" x2="0" y2="1"><stop stop-color="#d9eee4"/><stop offset="1" stop-color="#8eb7a6"/></linearGradient><filter id="shadow"><feGaussianBlur stdDeviation="22"/></filter></defs>
+<rect width="1600" height="900" fill="url(#bg)"/><circle cx="1280" cy="220" r="260" fill="#8fc8ac" opacity=".13"/>
+<g transform="translate(900 80)">
+ <rect x="0" y="0" width="600" height="470" rx="28" fill="#dce8e2" opacity=".96"/>
+ <rect x="34" y="34" width="532" height="285" rx="12" fill="url(#window)"/>
+ <path d="M210 34v285M390 34v285M34 176h532" stroke="#f3f5ef" stroke-width="16"/>
+ <path d="M34 350h532" stroke="#9eb4aa" stroke-width="14"/>
+ <g fill="#547f6e"><rect x="67" y="390" width="75" height="40" rx="8"/><rect x="165" y="390" width="75" height="40" rx="8"/><rect x="263" y="390" width="75" height="40" rx="8"/><rect x="361" y="390" width="75" height="40" rx="8"/><rect x="459" y="390" width="75" height="40" rx="8"/></g>
+</g>
+<!-- desk and equipment -->
+<ellipse cx="1230" cy="784" rx="420" ry="55" fill="#071e2b" opacity=".45" filter="url(#shadow)"/>
+<path d="M830 656h620l-38 45H868Z" fill="#c68f5f"/><path d="M885 700v120M1395 700v120" stroke="#80583e" stroke-width="22"/>
+<g transform="translate(1040 440)">
+ <rect x="0" y="0" width="300" height="190" rx="22" fill="#233f4d"/><rect x="18" y="18" width="264" height="145" rx="12" fill="#b8d6c8"/>
+ <path d="M46 126l50-48 46 25 57-63 54 26" fill="none" stroke="#28846a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+ <rect x="-42" y="190" width="385" height="22" rx="11" fill="#e0e6dc"/>
+</g>
+<!-- worker silhouette -->
+<g transform="translate(1350 360)">
+ <circle cx="75" cy="72" r="61" fill="#c98f6b"/>
+ <path d="M23 72q0-75 64-73 63 3 53 77-26-30-52-29-34 0-65 25Z" fill="#273d42"/>
+ <path d="M-8 340q5-174 83-174 95 0 112 174Z" fill="#5b8f79"/>
+ <path d="M41 186l34 68 37-68" fill="#edf4ed"/>
+ <path d="M76 253v87" stroke="#e4eee7" stroke-width="11"/>
+ <path d="M12 350l-22 80M174 350l22 80" stroke="#304d50" stroke-width="24" stroke-linecap="round"/>
+</g>
+<!-- plants and gear accent -->
+<g transform="translate(770 590)" fill="none" stroke="#a5c9ae" stroke-width="12" stroke-linecap="round"><path d="M55 180V65M55 120Q-10 85 0 30q60 6 55 90M55 145q68-45 85-102-73 4-85 102"/></g>
+<g transform="translate(815 250)" fill="none" stroke="#e9c885" stroke-width="9" opacity=".72"><circle cx="70" cy="70" r="47"/><circle cx="70" cy="70" r="18"/><path d="M70 6v-24M70 158v-24M6 70h-24M158 70h-24M25 25 8 8M115 115l17 17M115 25l17-17M25 115 8 132"/></g>
+</svg>
