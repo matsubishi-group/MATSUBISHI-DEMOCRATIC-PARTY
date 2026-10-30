@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#081b37">
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="refresh" content="5;url=index.html">
   <title>回答を受け付けました｜松菱民主党</title>
   <link rel="icon" href="assets/logo-tree.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=20261030-thanks">
-  <link rel="stylesheet" href="voice.css?v=20261030-thanks">
+  <link rel="stylesheet" href="styles.css?v=20261030-thanks2">
+  <link rel="stylesheet" href="voice.css?v=20261030-thanks2">
 </head>
 <body class="voice-page thanks-page">
   <div class="topline"><div class="container topline-inner"><span><i class="status-dot"></i> 松菱民主党 公式サイト</span><span class="topline-right">対話を力に、前へ進む政党へ。</span></div></div>
@@ -46,16 +47,21 @@
   <script>
     (() => {
       const counter = document.getElementById('countdown');
-      let remaining = 5;
+      const deadline = Date.now() + 5000;
       document.getElementById('year').textContent = new Date().getFullYear();
-      const countdownTimer = window.setInterval(() => {
-        remaining -= 1;
-        if (counter) counter.textContent = String(Math.max(remaining, 0));
-        if (remaining <= 0) {
+
+      const updateCountdown = () => {
+        const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+        if (counter) counter.textContent = String(remaining);
+        if (remaining === 0) {
           window.clearInterval(countdownTimer);
           window.location.replace('index.html');
         }
-      }, 1000);
+      };
+
+      const countdownTimer = window.setInterval(updateCountdown, 100);
+      updateCountdown();
+      window.setTimeout(() => window.location.replace('index.html'), 5000);
     })();
   </script>
 </body>
