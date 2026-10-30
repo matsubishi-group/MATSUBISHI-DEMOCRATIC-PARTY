@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081b37">
+  <meta name="description" content="松菱民主党の政策アンケート・ご意見募集ページです。関心のある政策やご意見をお聞かせください。">
+  <title>ご意見・アンケート｜松菱民主党</title>
+  <link rel="icon" href="assets/logo-tree.png" type="image/png">
+  <link rel="stylesheet" href="styles.css?v=20261030-scroll-fade">
+  <link rel="stylesheet" href="voice.css?v=20261030">
+</head>
+<body class="voice-page">
+  <div class="topline"><div class="container topline-inner"><span><i class="status-dot"></i> 松菱民主党 公式サイト</span><span class="topline-right">対話を力に、前へ進む政党へ。</span></div></div>
+  <header class="site-header voice-header">
+    <div class="container voice-header-inner">
+      <a class="brand" href="index.html" aria-label="松菱民主党 ホーム">
+        <img src="assets/logo-tree.png" width="48" height="48" alt="">
+        <span class="brand-text"><strong>松菱民主党</strong><small>MATSUBISHI DEMOCRATIC PARTY</small></span>
+      </a>
+      <a class="voice-home-link" href="index.html">← 公式サイトへ戻る</a>
+    </div>
+  </header>
+
+  <main id="main" class="voice-main">
+    <section class="voice-hero">
+      <div class="voice-container">
+        <p class="voice-kicker">YOUR VOICE MATTERS</p>
+        <h1>あなたの声を、<br><em>政策づくりの力に。</em></h1>
+        <p>松菱民主党では、日々の暮らしや社会の課題について、皆さまの声を大切にしています。関心のある政策やご意見をお聞かせください。</p>
+      </div>
+    </section>
+
+    <section class="voice-container voice-form-section" aria-label="ご意見・アンケート">
+      <div class="voice-card">
+        <div class="voice-card-heading">
+          <div>
+            <p class="voice-kicker dark">VOICE &amp; SURVEY</p>
+            <h2>ご意見・アンケート</h2>
+            <p>回答したい内容を選んでお進みください。</p>
+          </div>
+          <span class="voice-card-mark" aria-hidden="true">声</span>
+        </div>
+
+        <div class="voice-tabs" role="tablist" aria-label="回答の種類">
+          <button class="voice-tab is-active" type="button" role="tab" id="surveyTab" aria-selected="true" aria-controls="surveyPanel">政策アンケート</button>
+          <button class="voice-tab" type="button" role="tab" id="opinionTab" aria-selected="false" aria-controls="opinionPanel">ご意見・ご提案</button>
+        </div>
+
+        <form id="voiceForm" novalidate>
+          <section id="surveyPanel" class="voice-panel" role="tabpanel" aria-labelledby="surveyTab">
+            <p class="voice-panel-intro">関心のある政策分野を選び、特に関心のあるテーマをお答えください。</p>
+
+            <fieldset class="voice-question">
+              <legend><span class="question-number">Q1</span> 特に関心のある政策分野は？</legend>
+              <div class="choice-grid" id="policyChoices">
+                <label class="choice"><input type="radio" name="policy" value="物価高対策"><span>物価高対策</span></label>
+                <label class="choice"><input type="radio" name="policy" value="賃金・雇用"><span>賃金・雇用</span></label>
+                <label class="choice"><input type="radio" name="policy" value="子育て・教育"><span>子育て・教育</span></label>
+                <label class="choice"><input type="radio" name="policy" value="社会保障"><span>社会保障</span></label>
+                <label class="choice"><input type="radio" name="policy" value="地方経済・産業振興"><span>地方経済・産業振興</span></label>
+                <label class="choice"><input type="radio" name="policy" value="外交・安全保障"><span>外交・安全保障</span></label>
+                <label class="choice"><input type="radio" name="policy" value="その他"><span>その他</span></label>
+              </div>
+              <div class="conditional-field" id="policyOtherWrap" hidden>
+                <label for="policyOther">関心のある政策分野を入力してください。</label>
+                <input id="policyOther" name="policyOther" type="text" maxlength="100" placeholder="例：政治改革、デジタル政策">
+              </div>
+            </fieldset>
+
+            <fieldset class="voice-question">
+              <legend><span class="question-number">Q2</span> その分野で、特に関心のあるテーマは？</legend>
+              <p class="question-help">Q1で選んだ分野に合わせて選択肢が表示されます。</p>
+              <div class="choice-grid" id="focusChoices">
+                <p class="choice-placeholder">まずQ1で政策分野を選んでください。</p>
+              </div>
+              <div class="conditional-field" id="focusOtherWrap" hidden>
+                <label for="focusOther">具体的なテーマを入力してください。</label>
+                <input id="focusOther" name="focusOther" type="text" maxlength="120" placeholder="関心のあるテーマを入力">
+              </div>
+            </fieldset>
+
+            <fieldset class="voice-question">
+              <legend><span class="question-number">Q3</span> この政策分野をどの程度重要だと思いますか？</legend>
+              <div class="choice-grid importance-grid">
+                <label class="choice"><input type="radio" name="importance" value="とても重要"><span>とても重要</span></label>
+                <label class="choice"><input type="radio" name="importance" value="重要"><span>重要</span></label>
+                <label class="choice"><input type="radio" name="importance" value="どちらともいえない"><span>どちらともいえない</span></label>
+                <label class="choice"><input type="radio" name="importance" value="あまり重要ではない"><span>あまり重要ではない</span></label>
+                <label class="choice"><input type="radio" name="importance" value="重要ではない"><span>重要ではない</span></label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section id="opinionPanel" class="voice-panel" role="tabpanel" aria-labelledby="opinionTab" hidden>
+            <p class="voice-panel-intro">政策への意見や、松菱民主党に取り上げてほしい課題をお寄せください。</p>
+            <div class="voice-question">
+              <label class="field-label" for="opinionCategory">意見の分野</label>
+              <select id="opinionCategory" name="opinionCategory">
+                <option>政策について</option>
+                <option>党の活動について</option>
+                <option>政治・社会について</option>
+                <option>その他</option>
+              </select>
+            </div>
+            <div class="voice-question">
+              <label class="field-label" for="opinionTitle">タイトル <span class="optional">任意</span></label>
+              <input id="opinionTitle" name="opinionTitle" type="text" maxlength="100" placeholder="意見のタイトル">
+            </div>
+            <div class="voice-question">
+              <label class="field-label" for="opinionText">ご意見・ご提案</label>
+              <textarea id="opinionText" name="opinionText" rows="7" maxlength="2000" placeholder="ご意見やご提案を入力してください。"></textarea>
+            </div>
+          </section>
+
+          <div class="voice-form-actions">
+            <button class="voice-submit" type="submit">入力内容を確認する <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="voice-error" id="formError" role="alert" hidden></div>
+        </form>
+
+        <section class="voice-confirm" id="confirmPanel" aria-live="polite" hidden>
+          <div class="confirm-heading"><span aria-hidden="true">✓</span><div><p class="voice-kicker dark">REVIEW YOUR ANSWER</p><h3>入力内容の確認</h3></div></div>
+          <dl id="confirmContent" class="confirm-content"></dl>
+          <p class="confirm-notice">このページは現在試作版です。入力内容の確認はできますが、回答の送信・保存は行われません。</p>
+          <button class="voice-edit" id="editButton" type="button">入力に戻る</button>
+        </section>
+      </div>
+
+      <p class="voice-footnote">※氏名・住所・電話番号などの個人情報は入力しないでください。現在は回答を収集・保存する仕組みは接続されていません。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> 松菱民主党プロジェクト</p>
+      <p class="project-disclaimer">本サイトはScratch上で展開する架空の政党プロジェクトの紹介サイトです。実在する国政政党・公的機関とは関係ありません。</p>
+      <a href="index.html" class="back-top">公式サイトへ戻る ↑</a>
+    </div>
+  </footer>
+
+  <script>
+  (() => {
+    const topicMap = {
+      '物価高対策':['食料品・日用品','光熱費・燃料費','税金・社会保険料','住まい','子育て世帯・低所得者支援','中小企業支援','その他'],
+      '賃金・雇用':['最低賃金','賃上げ支援','非正規雇用','働き方・労働時間','若者の就職','人材育成','その他'],
+      '子育て・教育':['保育・学童','教育費・給食費','高校・大学への進学支援','学校環境','いじめ・不登校への支援','子育て世帯への支援','その他'],
+      '社会保障':['年金','医療','介護','保険料・窓口負担','障害福祉','生活に困っている人への支援','その他'],
+      '地方経済・産業振興':['農業・食料','中小企業・商店街','観光','地域の鉄道・バス','地域の雇用','インフラ・まちづくり','その他'],
+      '外交・安全保障':['憲法','防衛・自衛隊','外交・国際関係','日米関係・同盟','核軍縮・平和外交','経済安全保障','領土・海洋問題','国際協力・人道支援','国民保護・危機管理','その他'],
+      'その他':['政治・行政の制度改革','財政・予算','地域の課題','その他']
+    };
+
+    const form = document.getElementById('voiceForm');
+    const surveyTab = document.getElementById('surveyTab');
+    const opinionTab = document.getElementById('opinionTab');
+    const surveyPanel = document.getElementById('surveyPanel');
+    const opinionPanel = document.getElementById('opinionPanel');
+    const focusChoices = document.getElementById('focusChoices');
+    const policyOtherWrap = document.getElementById('policyOtherWrap');
+    const focusOtherWrap = document.getElementById('focusOtherWrap');
+    const confirmPanel = document.getElementById('confirmPanel');
+    const formError = document.getElementById('formError');
+    let activeTab = 'survey';
+
+    function selectedValue(name) {
+      const selected = form.querySelector('input[name="' + name + '"]:checked');
+      return selected ? selected.value : '';
+    }
+
+    function renderFocusChoices(policy) {
+      focusChoices.innerHTML = '';
+      const options = topicMap[policy] || [];
+      if (!options.length) {
+        const empty = document.createElement('p');
+        empty.className = 'choice-placeholder';
+        empty.textContent = 'まずQ1で政策分野を選んでください。';
+        focusChoices.appendChild(empty);
+        return;
+      }
+      options.forEach((option, index) => {
+        const label = document.createElement('label');
+        label.className = 'choice';
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'focus';
+        input.value = option;
+        input.id = 'focusOption' + index;
+        const span = document.createElement('span');
+        span.textContent = option;
+        label.append(input, span);
+        focusChoices.appendChild(label);
+      });
+    }
+
+    form.querySelectorAll('input[name="policy"]').forEach(input => {
+      input.addEventListener('change', () => {
+        renderFocusChoices(input.value);
+        policyOtherWrap.hidden = input.value !== 'その他';
+        focusOtherWrap.hidden = true;
+        document.getElementById('focusOther').value = '';
+        formError.hidden = true;
+      });
+    });
+
+    focusChoices.addEventListener('change', event => {
+      if (event.target && event.target.name === 'focus') {
+        focusOtherWrap.hidden = event.target.value !== 'その他';
+        if (event.target.value !== 'その他') document.getElementById('focusOther').value = '';
+        formError.hidden = true;
+      }
+    });
+
+    function switchTab(tab) {
+      activeTab = tab;
+      const surveyActive = tab === 'survey';
+      surveyTab.classList.toggle('is-active', surveyActive);
+      opinionTab.classList.toggle('is-active', !surveyActive);
+      surveyTab.setAttribute('aria-selected', String(surveyActive));
+      opinionTab.setAttribute('aria-selected', String(!surveyActive));
+      surveyPanel.hidden = !surveyActive;
+      opinionPanel.hidden = surveyActive;
+      confirmPanel.hidden = true;
+      formError.hidden = true;
+    }
+    surveyTab.addEventListener('click', () => switchTab('survey'));
+    opinionTab.addEventListener('click', () => switchTab('opinion'));
+
+    function addConfirmRow(list, label, value) {
+      const dt = document.createElement('dt');
+      const dd = document.createElement('dd');
+      dt.textContent = label;
+      dd.textContent = value || '未入力';
+      list.append(dt, dd);
+    }
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      formError.hidden = true;
+      const content = document.getElementById('confirmContent');
+      content.innerHTML = '';
+
+      if (activeTab === 'survey') {
+        const policy = selectedValue('policy');
+        const focus = selectedValue('focus');
+        const importance = selectedValue('importance');
+        const policyValue = policy === 'その他' ? document.getElementById('policyOther').value.trim() : policy;
+        const focusValue = focus === 'その他' ? document.getElementById('focusOther').value.trim() : focus;
+        if (!policy || !policyValue || !focus || !focusValue || !importance) {
+          formError.textContent = 'Q1からQ3まで選択してください。「その他」を選んだ場合は、内容も入力してください。';
+          formError.hidden = false;
+          return;
+        }
+        addConfirmRow(content, '政策分野', policyValue);
+        addConfirmRow(content, '関心のあるテーマ', focusValue);
+        addConfirmRow(content, '重要度', importance);
+      } else {
+        const category = document.getElementById('opinionCategory').value;
+        const title = document.getElementById('opinionTitle').value.trim();
+        const opinion = document.getElementById('opinionText').value.trim();
+        if (!opinion) {
+          formError.textContent = 'ご意見・ご提案を入力してください。';
+          formError.hidden = false;
+          return;
+        }
+        addConfirmRow(content, '分野', category);
+        addConfirmRow(content, 'タイトル', title || '未入力');
+        addConfirmRow(content, 'ご意見・ご提案', opinion);
+      }
+
+      confirmPanel.hidden = false;
+      confirmPanel.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+
+    document.getElementById('editButton').addEventListener('click', () => {
+      confirmPanel.hidden = true;
+      formError.hidden = true;
+      form.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
