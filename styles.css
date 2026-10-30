@@ -784,11 +784,10 @@
 .voice-invite-description{font-size:12px;line-height:2.05;color:#c2d1e1;margin:17px 0 17px 62px}
 .voice-invite-tags{display:flex;gap:8px;flex-wrap:wrap;margin-left:62px}
 .voice-invite-tags span{display:inline-flex;align-items:center;border:1px solid rgba(196,214,235,.34);border-radius:2px;padding:5px 10px;color:#d9e4f0;font-size:9px;font-weight:750;letter-spacing:.04em}
-.voice-invite-action{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:34px 34px 32px;background:rgba(255,255,255,.075);border-left:1px solid rgba(255,255,255,.12)}
-.voice-invite-action-label{font-size:8px;font-weight:900;letter-spacing:.17em;color:#a9bfd7}
-.voice-invite-action-mark{display:grid;place-items:center;width:42px;height:42px;margin:16px 0 11px;border:1px solid rgba(245,214,63,.65);color:#f5d63f;font-size:20px;font-weight:800;transform:rotate(45deg)}
-.voice-invite-action-mark::first-letter{transform:rotate(-45deg)}
-.voice-invite-action p{font-size:12px;line-height:1.9;color:#e0e8f1;margin:0 0 19px}
+.voice-invite-action{position:relative;z-index:1;display:flex;flex-direction:column;align-items:stretch;justify-content:center;padding:34px 34px 32px;background:rgba(255,255,255,.075);border-left:1px solid rgba(255,255,255,.12)}
+.voice-invite-action-label{display:flex;flex-direction:column;align-items:flex-start;gap:13px;font-size:8px;font-weight:900;letter-spacing:.17em;color:#a9bfd7}
+.voice-invite-action-label:after{content:"";display:block;width:30px;height:2px;background:#f5d63f}
+.voice-invite-action p{font-size:13px;line-height:1.95;color:#e0e8f1;margin:18px 0 19px;letter-spacing:.015em}
 .voice-invite-button{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;padding:15px 17px;background:#f5d63f;color:#081b37;border:1px solid #f5d63f;border-radius:3px;font-size:11px;font-weight:900;letter-spacing:.015em;box-shadow:0 8px 20px rgba(0,0,0,.14);transition:background .2s,transform .2s,box-shadow .2s}
 .voice-invite-button span{font-size:16px;font-weight:500}
 .voice-invite-button:hover{background:#ffe66d;transform:translateY(-2px);box-shadow:0 12px 25px rgba(0,0,0,.2)}
@@ -815,7 +814,7 @@
   .voice-invite-tags span{font-size:8px;padding:5px 8px}
   .voice-invite-action{padding:23px 22px 25px;border-left:0;border-top:1px solid rgba(255,255,255,.12)}
   .voice-invite-action-label{font-size:7px}
-  .voice-invite-action-mark{width:34px;height:34px;font-size:17px;margin:12px 0 9px}
-  .voice-invite-action p{font-size:11px;margin-bottom:14px}
+  .voice-invite-action-label{gap:10px}
+  .voice-invite-action p{font-size:12px;margin:14px 0 15px}
   .voice-invite-button{padding:14px 15px;font-size:11px}
 }
