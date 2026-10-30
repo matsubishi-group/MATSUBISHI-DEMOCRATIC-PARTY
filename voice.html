@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://matsubishi-group.github.io/MDP/voice.html">
   <link rel="icon" href="assets/logo-tree.png" type="image/png">
   <link rel="stylesheet" href="styles.css?v=20261030-thanks2">
-  <link rel="stylesheet" href="voice.css?v=20261030-thanks2">
+  <link rel="stylesheet" href="voice.css?v=20261030-finalflow">
 </head>
 <body class="voice-page">
   <div class="topline"><div class="container topline-inner"><span><i class="status-dot"></i> 松菱民主党 公式サイト</span><span class="topline-right">対話を力に、前へ進む政党へ。</span></div></div>
@@ -87,13 +87,14 @@
             </fieldset>
 
             <fieldset class="voice-question">
-              <legend><span class="question-number">Q3</span> この政策分野をどの程度重要だと思いますか？</legend>
-              <div class="choice-grid importance-grid">
-                <label class="choice"><input type="radio" name="importance" value="とても重要"><span>とても重要</span></label>
-                <label class="choice"><input type="radio" name="importance" value="重要"><span>重要</span></label>
-                <label class="choice"><input type="radio" name="importance" value="どちらともいえない"><span>どちらともいえない</span></label>
-                <label class="choice"><input type="radio" name="importance" value="あまり重要ではない"><span>あまり重要ではない</span></label>
-                <label class="choice"><input type="radio" name="importance" value="重要ではない"><span>重要ではない</span></label>
+              <legend><span class="question-number">Q3</span> そのテーマについて、あなたのスタンス（考え方）に最も近いものはどれですか？</legend>
+              <p class="question-help">Q1・Q2で選んだテーマについて、現在の考えに最も近いものを選んでください。</p>
+              <div class="choice-grid stance-grid">
+                <label class="choice"><input type="radio" name="stance" value="積極的に進めるべきだと思う"><span>積極的に進めるべきだと思う</span></label>
+                <label class="choice"><input type="radio" name="stance" value="必要性を見極めながら慎重に進めるべきだと思う"><span>必要性を見極めながら慎重に進めるべきだと思う</span></label>
+                <label class="choice"><input type="radio" name="stance" value="現状の取り組みを維持するのがよいと思う"><span>現状の取り組みを維持するのがよいと思う</span></label>
+                <label class="choice"><input type="radio" name="stance" value="内容や進め方を見直すべきだと思う"><span>内容や進め方を見直すべきだと思う</span></label>
+                <label class="choice"><input type="radio" name="stance" value="まだ判断できない・わからない"><span>まだ判断できない・わからない</span></label>
               </div>
             </fieldset>
           </section>
@@ -120,20 +121,11 @@
           </section>
 
           <div class="voice-form-actions">
-            <button class="voice-submit" type="submit">入力内容を確認する <span aria-hidden="true">→</span></button>
+            <button class="voice-submit" type="submit">入力内容を確認して完了する <span aria-hidden="true">→</span></button>
           </div>
           <div class="voice-error" id="formError" role="alert" hidden></div>
         </form>
 
-        <section class="voice-confirm" id="confirmPanel" aria-live="polite" hidden>
-          <div class="confirm-heading"><span aria-hidden="true">✓</span><div><p class="voice-kicker dark">REVIEW YOUR ANSWER</p><h3>入力内容の確認</h3></div></div>
-          <dl id="confirmContent" class="confirm-content"></dl>
-          <p class="confirm-notice">現在は回答の送信先が未接続です。次へ進むと完了画面が表示されますが、回答データは保存されません。</p>
-          <div class="voice-confirm-actions">
-            <button class="voice-edit" id="editButton" type="button">入力に戻る</button>
-            <a class="voice-complete" id="completeButton" href="thanks.html">回答を完了する <span aria-hidden="true">→</span></a>
-          </div>
-        </section>
       </div>
 
       <p class="voice-footnote">※氏名・住所・電話番号などの個人情報は入力しないでください。現在は回答を収集・保存する仕組みは接続されていません。</p>
@@ -168,7 +160,6 @@
     const focusChoices = document.getElementById('focusChoices');
     const policyOtherWrap = document.getElementById('policyOtherWrap');
     const focusOtherWrap = document.getElementById('focusOtherWrap');
-    const confirmPanel = document.getElementById('confirmPanel');
     const formError = document.getElementById('formError');
     let activeTab = 'survey';
 
@@ -229,62 +220,38 @@
       opinionTab.setAttribute('aria-selected', String(!surveyActive));
       surveyPanel.hidden = !surveyActive;
       opinionPanel.hidden = surveyActive;
-      confirmPanel.hidden = true;
       formError.hidden = true;
     }
     surveyTab.addEventListener('click', () => switchTab('survey'));
     opinionTab.addEventListener('click', () => switchTab('opinion'));
 
-    function addConfirmRow(list, label, value) {
-      const dt = document.createElement('dt');
-      const dd = document.createElement('dd');
-      dt.textContent = label;
-      dd.textContent = value || '未入力';
-      list.append(dt, dd);
-    }
-
     form.addEventListener('submit', event => {
       event.preventDefault();
       formError.hidden = true;
-      const content = document.getElementById('confirmContent');
-      content.innerHTML = '';
 
       if (activeTab === 'survey') {
         const policy = selectedValue('policy');
         const focus = selectedValue('focus');
-        const importance = selectedValue('importance');
+        const stance = selectedValue('stance');
         const policyValue = policy === 'その他' ? document.getElementById('policyOther').value.trim() : policy;
         const focusValue = focus === 'その他' ? document.getElementById('focusOther').value.trim() : focus;
-        if (!policy || !policyValue || !focus || !focusValue || !importance) {
+
+        if (!policy || !policyValue || !focus || !focusValue || !stance) {
           formError.textContent = 'Q1からQ3まで選択してください。「その他」を選んだ場合は、内容も入力してください。';
           formError.hidden = false;
           return;
         }
-        addConfirmRow(content, '政策分野', policyValue);
-        addConfirmRow(content, '関心のあるテーマ', focusValue);
-        addConfirmRow(content, '重要度', importance);
       } else {
-        const category = document.getElementById('opinionCategory').value;
-        const title = document.getElementById('opinionTitle').value.trim();
         const opinion = document.getElementById('opinionText').value.trim();
         if (!opinion) {
           formError.textContent = 'ご意見・ご提案を入力してください。';
           formError.hidden = false;
           return;
         }
-        addConfirmRow(content, '分野', category);
-        addConfirmRow(content, 'タイトル', title || '未入力');
-        addConfirmRow(content, 'ご意見・ご提案', opinion);
       }
 
-      confirmPanel.hidden = false;
-      confirmPanel.scrollIntoView({behavior:'smooth', block:'nearest'});
-    });
-
-    document.getElementById('editButton').addEventListener('click', () => {
-      confirmPanel.hidden = true;
-      formError.hidden = true;
-      form.scrollIntoView({behavior:'smooth', block:'start'});
+      // 入力必須項目を確認したら、別ページの完了画面へ移動します。
+      window.location.assign('thanks.html');
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
