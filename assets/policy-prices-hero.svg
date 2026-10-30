@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#102945"/><stop offset="1" stop-color="#244968"/></linearGradient>
+ <linearGradient id="glass" x2="0" y2="1"><stop stop-color="#f5dcae"/><stop offset="1" stop-color="#d28b49"/></linearGradient>
+ <linearGradient id="basket" x2="0" y2="1"><stop stop-color="#f0a84d"/><stop offset="1" stop-color="#b96532"/></linearGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<circle cx="1250" cy="230" r="300" fill="#547b8e" opacity=".2"/>
+<path d="M740 0h860v900H740z" fill="#203e59" opacity=".45"/>
+<g opacity=".22" stroke="#d5e7e9" stroke-width="3" fill="none"><path d="M845 100h690M845 170h690M845 240h690M845 310h690"/><path d="M930 45v360M1130 45v360M1330 45v360M1530 45v360"/></g>
+<ellipse cx="1220" cy="770" rx="380" ry="64" fill="#071729" opacity=".45" filter="url(#shadow)"/>
+<!-- grocery shelves -->
+<g transform="translate(930 185)">
+ <rect x="0" y="0" width="550" height="450" rx="26" fill="#e9d9bd" opacity=".96"/>
+ <rect x="25" y="28" width="500" height="100" rx="14" fill="#f6ead5"/>
+ <rect x="25" y="150" width="500" height="105" rx="14" fill="#f6ead5"/>
+ <rect x="25" y="278" width="500" height="145" rx="14" fill="#f6ead5"/>
+ <g><rect x="52" y="50" width="70" height="62" rx="9" fill="#d46c4e"/><rect x="136" y="46" width="70" height="66" rx="9" fill="#e7b44f"/><rect x="222" y="55" width="68" height="57" rx="9" fill="#8eb17c"/><rect x="305" y="48" width="72" height="64" rx="9" fill="#d58b52"/><rect x="393" y="51" width="88" height="61" rx="9" fill="#7fa6a1"/></g>
+ <g><circle cx="91" cy="201" r="31" fill="#e9a643"/><circle cx="163" cy="205" r="32" fill="#c95745"/><circle cx="237" cy="202" r="31" fill="#80a76a"/><circle cx="310" cy="205" r="30" fill="#e7be61"/><circle cx="386" cy="204" r="31" fill="#cd7548"/><circle cx="463" cy="201" r="31" fill="#9ebc79"/></g>
+ <g><rect x="48" y="308" width="96" height="89" rx="11" fill="#d6b18b"/><rect x="162" y="312" width="96" height="85" rx="11" fill="#e7c77d"/><rect x="278" y="308" width="96" height="89" rx="11" fill="#bad1be"/><rect x="392" y="311" width="91" height="86" rx="11" fill="#c98a75"/></g>
+</g>
+<!-- basket -->
+<g transform="translate(800 420)">
+ <path d="M65 125h420l-52 290q-7 42-49 42H166q-41 0-50-42Z" fill="url(#basket)" stroke="#f5c17d" stroke-width="12"/>
+ <path d="M115 180h320M104 250h334M96 320h324" stroke="#8c4b2c" stroke-width="16" opacity=".75"/>
+ <path d="M145 123q44-140 130-140t130 140" fill="none" stroke="#e6b46e" stroke-width="20" stroke-linecap="round"/>
+ <g><circle cx="162" cy="80" r="68" fill="#d94f43"/><circle cx="248" cy="35" r="63" fill="#e7ae42"/><circle cx="335" cy="83" r="65" fill="#7ba35d"/><path d="M245-25q-7-32 20-42" stroke="#587f4f" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M155 18q-27-38-56-24" stroke="#f6a5a0" stroke-width="11" fill="none" stroke-linecap="round"/><path d="M331 20q19-33 50-25" stroke="#c1d99b" stroke-width="12" fill="none" stroke-linecap="round"/></g>
+</g>
+<g transform="translate(1240 590)"><rect x="0" y="0" width="165" height="116" rx="20" fill="#e8f0ed"/><rect x="22" y="24" width="120" height="20" rx="10" fill="#b4c9c4"/><rect x="22" y="64" width="52" height="15" rx="7" fill="#d7a85f"/><rect x="86" y="64" width="56" height="15" rx="7" fill="#89a99c"/></g>
+<path d="M740 820h760" stroke="#adc0c3" stroke-width="3" opacity=".35"/>
+</svg>
