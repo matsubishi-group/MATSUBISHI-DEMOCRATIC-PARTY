@@ -93,7 +93,7 @@
 .voice-complete{text-decoration:none}
 .thanks-page{background:#f1f4f8;min-height:100vh;display:flex;flex-direction:column}
 .thanks-main{flex:1;display:grid;place-items:center;padding:56px 20px 68px;background:radial-gradient(circle at 50% 0,rgba(36,100,158,.11),transparent 42%),#f1f4f8}
-.thanks-card{position:relative;width:min(650px,100%);padding:48px 54px 43px;background:#fff;border:1px solid #dce5ef;box-shadow:0 20px 55px rgba(8,27,55,.10);text-align:center;overflow:hidden}
+.thanks-card{position:relative;width:min(650px,100%);padding:48px 54px 43px;background:#fff;border:1px solid #dce5ef;box-shadow:0 20px 55px rgba(8,27,55,.10);text-align:center;overflow:hidden;opacity:0;transform:translateY(16px);animation:thanks-fade-in .85s cubic-bezier(.2,.65,.3,1) both}
 .thanks-card:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#f5d63f 0 34%,#2fb58c 34% 67%,#2f77bd 67% 100%)}
 .thanks-emblem{width:66px;height:66px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;background:#e8f4ee;border:1px solid #cce6d8;color:#23815c}
 .thanks-emblem span{font-size:31px;font-weight:800;line-height:1}
@@ -107,7 +107,9 @@
 .thanks-return p{font-size:12px;color:#546a82;margin:7px 0 12px}
 .thanks-return p strong{font-size:24px;color:#154b7d;font-weight:900;font-variant-numeric:tabular-nums;padding:0 3px}
 .thanks-progress{height:4px;width:100%;background:#dce5ee;overflow:hidden}
-.thanks-progress span{display:block;width:100%;height:100%;background:#1e679e;transform-origin:left;animation:thanks-progress 5s linear forwards}
+.thanks-progress span{display:block;width:100%;height:100%;background:#1e679e;transform:scaleX(1);transform-origin:left;animation:none}
+.thanks-progress span.is-counting{animation:thanks-progress 5s linear forwards}
+@keyframes thanks-fade-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes thanks-progress{from{transform:scaleX(1)}to{transform:scaleX(0)}}
 .thanks-home-button{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 17px;background:#0b2851;color:#fff;border:1px solid #0b2851;border-radius:3px;font-size:11px;font-weight:850;transition:background .2s,transform .2s}
 .thanks-home-button:hover{background:#174879;transform:translateY(-2px)}
@@ -116,6 +118,7 @@
 .voice-complete{display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:10px 15px;background:#0b2851;color:#fff;border:1px solid #0b2851;border-radius:4px;font:inherit;font-size:12px;font-weight:850;cursor:pointer;transition:background .2s,transform .2s}
 .voice-complete:hover{background:#174879;transform:translateY(-1px)}
 .voice-complete span{color:#f5d63f;font-size:16px}
+@media(prefers-reduced-motion:reduce){.thanks-card{opacity:1;transform:none;animation:none}.thanks-progress span,.thanks-progress span.is-counting{animation:none;transform:scaleX(0)}}
 @media(max-width:640px){
   .thanks-main{padding:35px 16px 44px}
   .thanks-card{padding:36px 22px 29px}
