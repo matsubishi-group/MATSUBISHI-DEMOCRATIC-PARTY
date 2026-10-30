@@ -13,8 +13,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://matsubishi-group.github.io/MDP/voice.html">
   <link rel="icon" href="assets/logo-tree.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=20261030-scroll-fade">
-  <link rel="stylesheet" href="voice.css?v=20261030">
+  <link rel="stylesheet" href="styles.css?v=20261030-thanks">
+  <link rel="stylesheet" href="voice.css?v=20261030-thanks">
 </head>
 <body class="voice-page">
   <div class="topline"><div class="container topline-inner"><span><i class="status-dot"></i> 松菱民主党 公式サイト</span><span class="topline-right">対話を力に、前へ進む政党へ。</span></div></div>
@@ -128,8 +128,11 @@
         <section class="voice-confirm" id="confirmPanel" aria-live="polite" hidden>
           <div class="confirm-heading"><span aria-hidden="true">✓</span><div><p class="voice-kicker dark">REVIEW YOUR ANSWER</p><h3>入力内容の確認</h3></div></div>
           <dl id="confirmContent" class="confirm-content"></dl>
-          <p class="confirm-notice">このページは現在試作版です。入力内容の確認はできますが、回答の送信・保存は行われません。</p>
-          <button class="voice-edit" id="editButton" type="button">入力に戻る</button>
+          <p class="confirm-notice">現在は回答の送信先が未接続です。次へ進むと完了画面が表示されますが、回答データは保存されません。</p>
+          <div class="voice-confirm-actions">
+            <button class="voice-edit" id="editButton" type="button">入力に戻る</button>
+            <button class="voice-complete" id="completeButton" type="button">回答を完了する <span aria-hidden="true">→</span></button>
+          </div>
         </section>
       </div>
 
@@ -276,6 +279,10 @@
 
       confirmPanel.hidden = false;
       confirmPanel.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+
+    document.getElementById('completeButton').addEventListener('click', () => {
+      window.location.href = 'thanks.html';
     });
 
     document.getElementById('editButton').addEventListener('click', () => {
