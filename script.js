@@ -125,5 +125,28 @@
     }, {rootMargin:'-32% 0px -58% 0px', threshold:0});
     document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
   }
+
+  // Reveal key sections as visitors scroll through the site.
+  // Content remains visible if IntersectionObserver is unavailable.
+  const revealTargets = document.querySelectorAll(
+    '.value-item, .about-layout, .policy-card, .approach-layout, .news-intro, .news-card, .message-layout, .timeline-item, .closing-inner, .policy-page-hero, .policy-page-panel, .policy-diagram-section, .policy-actions-panel, .policy-check, .policy-project-notice, .constitution-panel'
+  );
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    revealTargets.forEach((element, index) => {
+      element.classList.add('scroll-reveal');
+      element.style.setProperty('--reveal-delay', `${(index % 3) * 75}ms`);
+    });
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+    revealTargets.forEach(element => revealObserver.observe(element));
+  } else {
+    revealTargets.forEach(element => element.classList.add('is-revealed'));
+  }
+
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
