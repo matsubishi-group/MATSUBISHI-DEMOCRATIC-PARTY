@@ -90,6 +90,7 @@
 }
 
 /* Separate completion page for the opinion and survey flow. */
+.voice-complete{text-decoration:none}
 .thanks-page{background:#f1f4f8;min-height:100vh;display:flex;flex-direction:column}
 .thanks-main{flex:1;display:grid;place-items:center;padding:56px 20px 68px;background:radial-gradient(circle at 50% 0,rgba(36,100,158,.11),transparent 42%),#f1f4f8}
 .thanks-card{position:relative;width:min(650px,100%);padding:48px 54px 43px;background:#fff;border:1px solid #dce5ef;box-shadow:0 20px 55px rgba(8,27,55,.10);text-align:center;overflow:hidden}
