@@ -127,3 +127,16 @@
   .voice-confirm-actions{align-items:stretch;flex-direction:column-reverse}
   .voice-confirm-actions button{width:100%;justify-content:center}
 }
+
+
+/* Live survey submission and privacy consent. */
+.voice-consent{margin:0 34px 20px;padding:15px 17px;background:#f5f8fb;border:1px solid #dce5ef;border-radius:5px}
+.voice-consent-label{display:flex;align-items:flex-start;gap:10px;color:#30465f;cursor:pointer}
+.voice-consent-label input{flex:0 0 auto;width:17px;height:17px;margin:3px 0 0;accent-color:#1d67a9}
+.voice-consent-label span{font-size:12px;line-height:1.8;font-weight:700}
+.voice-honeypot{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.voice-submit:disabled{opacity:.62;cursor:wait;transform:none;box-shadow:none}
+@media(max-width:640px){
+  .voice-consent{margin:0 19px 18px;padding:13px}
+  .voice-consent-label span{font-size:11px}
+}
