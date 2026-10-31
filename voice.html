@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://matsubishi-group.github.io/MDP/voice.html">
   <link rel="icon" href="assets/logo-tree.png" type="image/png">
   <link rel="stylesheet" href="styles.css?v=20261030-navfix">
-  <link rel="stylesheet" href="voice.css?v=20261030-finalflow">
+  <link rel="stylesheet" href="voice.css?v=20261031-live-submit">
 </head>
 <body class="voice-page">
   <div class="topline"><div class="container topline-inner"><span><i class="status-dot"></i> 松菱民主党 公式サイト</span><span class="topline-right">対話を力に、前へ進む政党へ。</span></div></div>
@@ -119,15 +119,26 @@
             </div>
           </section>
 
-          <div class="voice-form-actions">
-            <button class="voice-submit" type="submit">入力内容を確認して完了する <span aria-hidden="true">→</span></button>
+          <div class="voice-consent">
+            <label class="voice-consent-label">
+              <input type="checkbox" id="privacyConsent" required>
+              <span>回答内容が政策づくり・活動改善の参考として保存され、保存先の管理担当者が閲覧することに同意します。</span>
+            </label>
           </div>
-          <div class="voice-error" id="formError" role="alert" hidden></div>
+          <div class="voice-honeypot" aria-hidden="true">
+            <label for="website">この欄には入力しないでください
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </label>
+          </div>
+          <div class="voice-form-actions">
+            <button class="voice-submit" type="submit">回答を送信する <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="voice-error" id="formError" role="alert" aria-live="polite" hidden></div>
         </form>
 
       </div>
 
-      <p class="voice-footnote">※氏名・住所・電話番号などの個人情報は入力しないでください。現在は回答を収集・保存する仕組みは接続されていません。</p>
+      <p class="voice-footnote">※回答は松菱民主党プロジェクトの政策づくり・活動改善の参考として保存され、保存先の管理担当者が閲覧します。回答データは送信から365日後に自動削除されます。氏名・学校名・住所・電話番号・メールアドレス・SNSアカウントなど、個人を特定できる情報は入力しないでください。自由記述欄には個人情報を書かないでください。</p>
     </section>
   </main>
 
@@ -140,6 +151,9 @@
 
   <script>
   (() => {
+    const SUPABASE_FUNCTION_URL = 'https://sdcaunsflsfptxolednu.supabase.co/functions/v1/submit-survey';
+    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_bcOFpoCHluTlmHunbMDJSg_F5haPsXx';
+
     const topicMap = {
       '物価高対策':['食料品・日用品','光熱費・燃料費','税金・社会保険料','住まい','子育て世帯・低所得者支援','中小企業支援','その他'],
       '賃金・雇用':['最低賃金','賃上げ支援','非正規雇用','働き方・労働時間','若者の就職','人材育成','その他'],
@@ -159,7 +173,10 @@
     const policyOtherWrap = document.getElementById('policyOtherWrap');
     const focusOtherWrap = document.getElementById('focusOtherWrap');
     const formError = document.getElementById('formError');
+    const submitButton = form.querySelector('.voice-submit');
+    const consent = document.getElementById('privacyConsent');
     let activeTab = 'survey';
+    let isSending = false;
 
     function selectedValue(name) {
       const selected = form.querySelector('input[name="' + name + '"]:checked');
@@ -223,33 +240,88 @@
     surveyTab.addEventListener('click', () => switchTab('survey'));
     opinionTab.addEventListener('click', () => switchTab('opinion'));
 
-    form.addEventListener('submit', event => {
+    form.addEventListener('submit', async event => {
       event.preventDefault();
+      if (isSending) return;
       formError.hidden = true;
 
+      if (!consent.checked) {
+        formError.textContent = '回答の保存と管理担当者による閲覧について、同意欄にチェックしてください。';
+        formError.hidden = false;
+        consent.focus();
+        return;
+      }
+
+      let payload;
       if (activeTab === 'survey') {
         const policy = selectedValue('policy');
         const focus = selectedValue('focus');
         const stance = selectedValue('stance');
-        const policyValue = policy === 'その他' ? document.getElementById('policyOther').value.trim() : policy;
-        const focusValue = focus === 'その他' ? document.getElementById('focusOther').value.trim() : focus;
+        const policyOther = document.getElementById('policyOther').value.trim();
+        const focusOther = document.getElementById('focusOther').value.trim();
+        const policyValue = policy === 'その他' ? policyOther : policy;
+        const focusValue = focus === 'その他' ? focusOther : focus;
 
         if (!policy || !policyValue || !focus || !focusValue || !stance) {
           formError.textContent = 'Q1からQ3まで選択してください。「その他」を選んだ場合は、内容も入力してください。';
           formError.hidden = false;
           return;
         }
+        payload = {
+          kind: 'policy_survey',
+          policy_category: policy,
+          policy_other: policy === 'その他' ? policyOther : '',
+          focus_topic: focus,
+          focus_other: focus === 'その他' ? focusOther : '',
+          stance,
+          consent: true,
+          website: document.getElementById('website').value
+        };
       } else {
         const opinion = document.getElementById('opinionText').value.trim();
+        const category = document.getElementById('opinionCategory').value;
+        const title = document.getElementById('opinionTitle').value.trim();
         if (!opinion) {
           formError.textContent = 'ご意見・ご提案を入力してください。';
           formError.hidden = false;
           return;
         }
+        payload = {
+          kind: 'opinion',
+          opinion_category: category,
+          opinion_title: title,
+          opinion_text: opinion,
+          consent: true,
+          website: document.getElementById('website').value
+        };
       }
 
-      // 入力必須項目を確認したら、別ページの完了画面へ移動します。
-      window.location.assign('thanks.html');
+      isSending = true;
+      submitButton.disabled = true;
+      submitButton.textContent = '送信中...';
+      try {
+        const response = await fetch(SUPABASE_FUNCTION_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_PUBLISHABLE_KEY
+          },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || result.ok !== true) {
+          throw new Error(result.error || '回答を保存できませんでした。');
+        }
+        window.location.assign('thanks.html');
+      } catch (error) {
+        formError.textContent = error instanceof Error
+          ? error.message + ' 入力内容はそのまま残っていますので、通信状態を確認して再度お試しください。'
+          : '回答を送信できませんでした。通信状態を確認して再度お試しください。';
+        formError.hidden = false;
+        isSending = false;
+        submitButton.disabled = false;
+        submitButton.innerHTML = '回答を送信する <span aria-hidden="true">→</span>';
+      }
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
